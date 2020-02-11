@@ -13,7 +13,7 @@ prefix=$3
 perl /THL4/home/bgi_guofengyu/work/haplotyping/script/aratio_filter.pl /THL4/home/bgi_guofengyu/work/haplotyping/freq/selected_0.5M.chr11.freq.txt $fam_vcf ${prefix}.filter.vcf.gz
 perl /THL4/home/bgi_guofengyu/work/haplotyping/script/noninvasive_analysis/get_parent_vcf.pl ${prefix}.filter.vcf.gz ${prefix}.fam.filter.vcf.gz
 tabix -f -p vcf ${prefix}.fam.filter.vcf.gz
-vcf-merge $popu_vcf ${prefix}.fam.filter.vcf.gz|bgzip -c > ${prefix}.fam.merge.vcf.gz
+vcf-merge $popu_vcf ${prefix}.fam.filter.vcf.gz 2>${prefix}.fam.merge.log |bgzip -c > ${prefix}.fam.merge.vcf.gz
 if [ $? -ne 0 ]; then
     echo "vcf-merge failed"
     exit 1
