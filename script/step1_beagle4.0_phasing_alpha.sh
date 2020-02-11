@@ -21,7 +21,7 @@ if [ $? -ne 0 ]; then
     echo "vcf-merge failed"
     exit 1
 fi
-perl /THL4/home/bgi_guofengyu/work/haplotyping/script/nomissing.pl ${prefix}.fam.merge.vcf.gz ${prefix}.fam.merge.nomissing.vcf.gz
+perl script/nomissing.pl ${prefix}.fam.merge.vcf.gz ${prefix}.fam.merge.nomissing.vcf.gz
 java -Xmx9000m -jar /THL4/home/bgi_guofengyu/work/hap_software/beagle.r1399.jar gt=${prefix}.fam.merge.nomissing.vcf.gz usephase=true out=${prefix}.phased
 if [ $? -ne 0 ]; then
     echo "beagle failed"
