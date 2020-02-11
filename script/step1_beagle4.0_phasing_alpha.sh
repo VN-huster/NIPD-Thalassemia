@@ -13,7 +13,7 @@ prefix=$3
 cnv=$4
 perl script/aratio_filter.pl db/selected_0.5M.chr16.freq.txt $fam_vcf ${prefix}.filter.vcf.gz
 perl script/get_parent_vcf.pl ${prefix}.filter.vcf.gz ${prefix}.fam.filter.vcf.gz
-perl /vol6/home/bgi_zhuyaping/project/hap_analysis/50fam/NIPD_analysis/alpha.pl $cnv ${prefix}.fam.filter.vcf.gz ${prefix}.fam.filter.alpha.headers ${prefix}.fam.filter.alpha.vcf
+perl script/alpha.pl $cnv ${prefix}.fam.filter.vcf.gz ${prefix}.fam.filter.alpha.headers ${prefix}.fam.filter.alpha.vcf
 cat ${prefix}.fam.filter.alpha.headers ${prefix}.fam.filter.alpha.vcf |bgzip -c >${prefix}.fam.filter.alpha.vcf.gz
 tabix -f -p vcf ${prefix}.fam.filter.alpha.vcf.gz
 vcf-merge $popu_vcf ${prefix}.fam.filter.alpha.vcf.gz 2>${prefix}.fam.merge.log |bgzip -c > ${prefix}.fam.merge.vcf.gz
