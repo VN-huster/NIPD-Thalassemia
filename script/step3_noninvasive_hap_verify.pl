@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 use strict;
+use FindBin qw($Bin);
 die "perl $0 <hapfile> <fam VCF> <mat mutation> <pat mutation><prefix>\n" if @ARGV<5;
 my $hapfile=shift;
 my $vcf = shift;
@@ -109,12 +110,10 @@ while(<VCF>){
 }
 close VCF;
 close OUT;
-system "perl noninvasive_Haplotype_err_compute.pl $hapfile $outfile $outfile.stat $mat_mut $pat_mut";
-print "perl noninvasive_Haplotype_err_compute.pl $hapfile $outfile $outfile.stat $mat_mut $pat_mut\n";
+system "perl $Bin/noninvasive_Haplotype_err_compute.pl $hapfile $outfile $outfile.stat $mat_mut $pat_mut";
+print "perl $Bin/noninvasive_Haplotype_err_compute.pl $hapfile $outfile $outfile.stat $mat_mut $pat_mut\n";
 if($type==1){
-    #system "Rscript /THL4/home/bgi_guofengyu/work/haplotyping/script/noninvasive_fam_hap_plot_alpha.R $outfile $prefix.alpha";
-    system "Rscript noninvasive_fam_hap_plot_alpha.R $outfile $prefix.alpha";
+    system "Rscript $Bin/noninvasive_fam_hap_plot_alpha.R $outfile $prefix.alpha";
 }elsif($type==2){
-    #system "Rscript /THL4/home/bgi_guofengyu/work/haplotyping/script/noninvasive_fam_hap_plot_beta.R $outfile $prefix.beta";
-    system "Rscript noninvasive_fam_hap_plot_beta.R $outfile $prefix.beta";
+    system "Rscript $Bin/noninvasive_fam_hap_plot_beta.R $outfile $prefix.beta";
 }
