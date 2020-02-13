@@ -115,6 +115,10 @@ OUT[OUT$chr!=24,]->OUT
 OUT[OUT$F0==OUT$F1,]->md
 OUT[OUT$M0==OUT$M1&OUT$F0!=OUT$F1,]->fd
 fd[fd$chr!=23,]->fd
+if(nrow(fd)==0){
+	print ('No qualified snps')
+	q()
+}
 #md[t.fr>t.fr.box$stats[2]&t.fr<t.fr.box$stats[4],]->md.fix
 #md->md.fix
 
