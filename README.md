@@ -33,9 +33,9 @@ get samples' vcf and copy to `workdir/input` .
 sh script/create.table1.sh
 ```
 
-## create table2
+## create table3
 ```
-sh script/create.table2.sh
+sh script/create.table3.sh
 ```
 
 ## plot figure S2
