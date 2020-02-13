@@ -1,4 +1,2 @@
-mkdir -p workdir/output/haplotype_consistency_plot
-cd workdir/output/haplotype_consistency_plot/
-Rscript ../../../script/beta_fetus_hap_consistency.v6.R 
-Rscript ../../../script/alpha_fetus_hap_consistency.v6.R 
+Rscript script/fetus_hap_consistency.alpha.R workdir/input/alpha.list workdir/output
+Rscript script/fetus_hap_consistency.beta.R workdir/input/beta.list workdir/output 
