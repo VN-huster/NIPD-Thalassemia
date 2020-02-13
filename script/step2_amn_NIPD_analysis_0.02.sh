@@ -26,7 +26,7 @@ if [ $? -ne 0 ]; then
     echo "HMM_mat failed"
     exit 1
 fi
-perl /THL4/home/bgi_guofengyu/work/haplotyping/script/amn_noninvasive_analysis/amn_split_v2_pat.pl $prefix
-perl /THL4/home/bgi_guofengyu/work/haplotyping/script/amn_noninvasive_analysis/amn_split_v2_mat.pl $prefix
+perl script/amn_split_v2_pat.pl $prefix
+perl script/amn_split_v2_mat.pl $prefix
 date
 exit 0
