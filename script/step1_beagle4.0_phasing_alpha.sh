@@ -22,7 +22,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 perl script/nomissing.pl ${prefix}.fam.merge.vcf.gz ${prefix}.fam.merge.nomissing.vcf.gz
-java -Xmx9000m -jar /THL4/home/bgi_guofengyu/work/hap_software/beagle.r1399.jar gt=${prefix}.fam.merge.nomissing.vcf.gz usephase=true out=${prefix}.phased
+java -Xmx9000m -jar bin/beagle.r1399.jar gt=${prefix}.fam.merge.nomissing.vcf.gz usephase=true out=${prefix}.phased
 if [ $? -ne 0 ]; then
     echo "beagle failed"
     exit 1

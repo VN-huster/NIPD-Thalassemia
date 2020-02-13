@@ -4,8 +4,9 @@ NIPT-Thalassemia
 # pipeline of parper
 
 ## step0
-get ref panel and copy to `db/` .
-get samples' vcf and copy to `workdir/input` .
+get ref panel and copy to `db/` .   
+get samples' vcf and copy to `workdir/input` .  
+`mkdir -p workdir/output`
 
 ## step1
 ```
@@ -17,7 +18,7 @@ get samples' vcf and copy to `workdir/input` .
 ./bin/parallelRun -list script/run_step2.sh
 ```
 
-## step4
+## step3
 ```
 ./bin/parallelRun -list script/run_step3.sh
 ```
