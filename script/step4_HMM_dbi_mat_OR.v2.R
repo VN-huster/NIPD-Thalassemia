@@ -158,8 +158,7 @@ if(1){
 ########################
 #HMM
 #######################
-#genetic_map.txt="/vol6/home/bgi_wangyy/project/pl/genetic_map/genetic_map_GRCh37_all.txt";
-genetic_map.txt="/THL4/home/bgi_guofengyu/work/haplotyping/config/genetic_map_GRCh37_HBB_HBA_1M.txt";
+genetic_map.txt="db/genetic_map_GRCh37_HBB_HBA_1M.txt";
 genetic_map <- read.table(genetic_map.txt,head=T)
 getTransProbs  <- function(map,snpset,chrname){
 	chrmap0<- map[map[,1]==chrname,c(2,4)]

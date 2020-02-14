@@ -5,11 +5,8 @@ use 5.010;
 $#ARGV<0 and die"$0 prefix [gender]\n";
 $md=shift;
 $gender=shift;
-$Gene=q[/THL4/home/bgi_guofengyu/project/hap_analysis/NIPT_V2_gene.txt];
-#$Plot_R=q[~/project/pl/PKU1/plot.R];
-#$Plot_R=q[/vol6/home/bgi_wangyy/project/PGD/NIPTv2/20150115.33-34/alignment/SMA-5-plasma/plot.R];
-#$Plot_R=q[/THL4/home/bgi_guofengyu/project/hap_analysis/plot_v2.R];
-$Plot_R=q[/THL4/home/bgi_guofengyu/work/haplotyping/script/amn_noninvasive_analysis/amn_plot_v2.R];
+$Gene=q[db/NIPT_V2_gene.txt];
+$Plot_R=q[script/amn_plot_v2.R];
 
 open GENE,"< $Gene" or die$!;
 my(%start,%end);

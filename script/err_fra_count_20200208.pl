@@ -25,7 +25,7 @@ my $ff_total;
 my ($err, $n_for_err, $fra, $n_for_fra);
 open FRA, "> $prefix.fra" or die $!;
 
-open VCF, "tabix -B $vcf /THL4/home/bgi_guofengyu/work/NIPT/HPC/config/npitv3-2P1_capture_targets.bed|"||die $!;
+open VCF, "tabix -B $vcf db/npitv3-2P1_capture_targets.bed|"||die $!;
 while(<VCF>){
     chomp;
     s/\|/\//g;
