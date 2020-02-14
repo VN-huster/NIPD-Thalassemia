@@ -6,7 +6,7 @@ $#ARGV<0 and die"$0 prefix [gender]\n";
 $md=shift;
 $gender=shift;
 $Gene=q[db/NIPT_V2_gene.txt];
-$Plot_R=q[script/fetal_analysis/plot_v2.R];
+$Plot_R=q[script/plot_v2.R];
 
 open GENE,"< $Gene" or die$!;
 my(%start,%end);
