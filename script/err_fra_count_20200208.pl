@@ -23,7 +23,7 @@ my $snpa;
 my $snpb;
 my $ff_total;
 my ($err, $n_for_err, $fra, $n_for_fra);
-open FRA, "> $prefix.fra" or die $!;
+open FRA, "> $prefix.fra2" or die $!;
 
 open VCF, "tabix -B $vcf db/npitv3-2P1_capture_targets.bed|"||die $!;
 while(<VCF>){
@@ -77,4 +77,7 @@ my $err_rate=$err/$n_for_err;
 my $fetal_fra1=$fra*2/$n_for_fra;
 my $fetal_fra2=$ff_total/$snpb;
 print "$prefix\t$snpa\t$snpb\t$err_rate\t$fetal_fra1\t$fetal_fra2\n";
-#print "sample\tsnp\thet_snp\n";
+close FEA;
+open ERR,"> $prefix.perror.txt" or die$!;
+print ERR "$err_rate\n";
+close ERR;
