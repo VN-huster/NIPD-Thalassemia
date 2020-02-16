@@ -125,3 +125,6 @@ while(<VCF>){
     print OUT "$chr\t$pos\t$ref\t$alt\t$F0\t$F1\t$M0\t$M1\t$ad_plasma[0]\t$ad_plasma[1]\t$amn_F\t$amn_M\n";
     $chr<=23 and print MAD "$chr\t$pos\t$gt_mat\t$ad_mat[0]\t$ad_mat[1]\n";
 }
+close FRA;
+close OUT;
+close MAD;
