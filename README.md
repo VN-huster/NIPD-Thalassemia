@@ -29,20 +29,35 @@ or
 ```
 for parallel run
 
-## Step2
+## Step2: NIPD
 ```
-./bin/parallelRun -list script/run_step2.sh
+sh script/run_step1.sh
 ```
+or 
+```
+./bin/parallelRun -list script/run_step1.sh
+```
+for parallel run
 
 ## Step3
 ```
-./bin/parallelRun -list script/run_step3.sh
+sh script/run_step1.sh
 ```
+or 
+```
+./bin/parallelRun -list script/run_step1.sh
+```
+for parallel run
 
 ## Step4
 ```
-./bin/parallelRun -list script/run_step4.sh
+sh script/run_step1.sh
 ```
+or 
+```
+./bin/parallelRun -list script/run_step1.sh
+```
+for parallel run
 
 ## Create table1
 ```
@@ -68,4 +83,10 @@ Rscript script/fetus_hap_consistency.beta.R workdir/input/beta.list workdir/outp
 ## Plot figure S3
 ```
 sh script/plot.figureS3.sh
+```
+
+## Calculate confidence score
+after *step2*, we can calculate confidence score use:
+```
+Rscript script/cal.pathCS.R workdir/output
 ```
