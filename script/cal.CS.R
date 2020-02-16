@@ -1,8 +1,9 @@
-#args=commandArgs(T)
+args=commandArgs(T)
+workdir=args[1]
 
 sList=paste0("F",c(paste0(0,1:9),10:59))
-fList=paste0(sList,"_nipt.fout")
-mList=paste0(sList,"_nipt.mout")
+fList=paste0(workdir,"/",sList,"_nipt.fout")
+mList=paste0(workdir,"/",sList,"_nipt.mout")
 info<-cbind(sList,fList,mList)
 info<-data.frame(cbind(sList,fList,mList),stringsAsFactors=F)
 colnames(info)<-c("SID","Ffile","Mfile")
@@ -28,5 +29,5 @@ for(i in 1:nrow(info)){
   }
 }
 
-write.table(info,"cs.tsv",row.names = F,quote = F,sep="\t")
+write.table(info,paste0(workdir,"/cs.tsv"),row.names = F,quote = F,sep="\t")
 
