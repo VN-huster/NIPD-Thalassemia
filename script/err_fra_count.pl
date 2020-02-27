@@ -39,18 +39,20 @@ while(<VCF>){
 	my $plasma=$sample[$plasma_id];
 	next if $mat eq "./." or $pat eq "./." or $plasma eq "./.";
 	next if $mat eq "." or $pat eq "." or $plasma eq ".";
-	my $mat_gt=(split /:/, $mat)[0];
-	my $pat_gt=(split /:/, $pat)[0];
 	my @f=split /:/, $format;
 	my %hash_format;
 	@hash_format{@f}=0..$#f;
-	if(!exists $hash_format{'AD'}){
-		next;
-	}
+	next if (!exists $hash_format{'AD'});
+	my ($mat_gt,$mat_AD,$mat_DP)=(split /:/, $mat)[$hash_format{'GT'}, $hash_format{'AD'},$hash_format{'DP'}];
+	my ($pat_gt,$pat_AD,$pat_DP)=(split /:/, $pat)[$hash_format{'GT'}, $hash_format{'AD'},$hash_format{'DP'}];
 	my ($plasma_gt, $plasma_AD)=(split /:/, $plasma)[$hash_format{'GT'}, $hash_format{'AD'}];
-	my ($ad0, $ad1)=split /,/, $plasma_AD;
+	my ($ad0, $ad1)=(split /,/, $plasma_AD)[0,1];
+	my ($pat_ad0, $pat_ad1)=(split /,/, $pat_AD)[0,1];
+	my ($mat_ad0, $mat_ad1)=(split /,/, $mat_AD)[0,1];
 	my $dp=$ad0+$ad1;
 	next if $dp<30;
+	next if $pat_ad0+$pat_ad1<30;
+	next if $mat_ad0+$mat_ad1<30;
 	if ($pat_gt eq "0/0" && $mat_gt eq "0/0"){
 		$snpa++;
 		$err+=$ad1;
@@ -59,13 +61,13 @@ while(<VCF>){
 		$snpa++;
 		$err+=$ad0;
 		$n_for_err+=$ad0+$ad1;
-	}elsif($pat_gt eq "0/0" && $mat_gt eq "1/1"){
+	}elsif($pat_gt eq "0/0" && $mat_gt eq "1/1" && ($plasma_gt eq "0/1" or $plasma_gt eq "1/1")){
 		$snpb++;
 		$fra+=$ad0;
 		$n_for_fra+=$ad0+$ad1;
 		$ff_total+=2*$ad0/$dp;
 		print FRA "$chr\t$pos\t$ref\t$alt\t$ad0\t$dp\t" . (2*$ad0/$dp)."\n";
-	}elsif($pat_gt eq "1/1" && $mat_gt eq "0/0"){
+	}elsif($pat_gt eq "1/1" && $mat_gt eq "0/0"&& ($plasma_gt eq "0/1" or $plasma_gt eq "0/0")){
 		$snpb++;
 		$fra+=$ad1;
 		$n_for_fra+=$ad0+$ad1;
@@ -77,7 +79,10 @@ my $err_rate=$err/$n_for_err;
 my $fetal_fra1=$fra*2/$n_for_fra;
 my $fetal_fra2=$ff_total/$snpb;
 print "$prefix\t$snpa\t$snpb\t$err_rate\t$fetal_fra1\t$fetal_fra2\n";
-close FEA;
+close FRA;
 open ERR,"> $prefix.perror.txt" or die$!;
 print ERR "$err_rate\n";
 close ERR;
+open FF,"> $prefix.ff.txt" or die$!;
+print FF "$fetal_fra1\n";
+close FF;
