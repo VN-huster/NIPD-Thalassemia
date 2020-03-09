@@ -45,14 +45,18 @@ while(<VCF>){
 	next if (!exists $hash_format{'AD'});
 	my ($mat_gt,$mat_AD,$mat_DP)=(split /:/, $mat)[$hash_format{'GT'}, $hash_format{'AD'},$hash_format{'DP'}];
 	my ($pat_gt,$pat_AD,$pat_DP)=(split /:/, $pat)[$hash_format{'GT'}, $hash_format{'AD'},$hash_format{'DP'}];
-	my ($plasma_gt, $plasma_AD)=(split /:/, $plasma)[$hash_format{'GT'}, $hash_format{'AD'}];
+	my ($plasma_gt, $plasma_AD,$plasma_DP)=(split /:/, $plasma)[$hash_format{'GT'}, $hash_format{'AD'},$hash_format{'DP'}];
 	my ($ad0, $ad1)=(split /,/, $plasma_AD)[0,1];
-	my ($pat_ad0, $pat_ad1)=(split /,/, $pat_AD)[0,1];
 	my ($mat_ad0, $mat_ad1)=(split /,/, $mat_AD)[0,1];
+	my ($pat_ad0, $pat_ad1)=(split /,/, $pat_AD)[0,1];
 	my $dp=$ad0+$ad1;
+	my $mat_dp=$mat_ad0+$mat_ad1;
+	my $pat_dp=$pat_ad0+$pat_ad1;
 	next if $dp<30;
-	next if $pat_ad0+$pat_ad1<30;
-	next if $mat_ad0+$mat_ad1<30;
+	next if $mat_dp<30;
+	next if $pat_dp<30;
+
+	#next if ($dp<30 || $mat_AD<30 || $pat_AD<30);
 	if ($pat_gt eq "0/0" && $mat_gt eq "0/0"){
 		$snpa++;
 		$err+=$ad1;
@@ -66,12 +70,14 @@ while(<VCF>){
 		$fra+=$ad0;
 		$n_for_fra+=$ad0+$ad1;
 		$ff_total+=2*$ad0/$dp;
+		#print "$chr\t$pos\t$ref\t$alt\t$mat_gt:$mat_AD:$mat_DP\t$pat_gt:$pat_AD:$pat_DP\t$plasma_gt:$plasma_AD:$plasma_DP\t$ad0\t$dp\n";
 		print FRA "$chr\t$pos\t$ref\t$alt\t$ad0\t$dp\t" . (2*$ad0/$dp)."\n";
 	}elsif($pat_gt eq "1/1" && $mat_gt eq "0/0"&& ($plasma_gt eq "0/1" or $plasma_gt eq "0/0")){
 		$snpb++;
 		$fra+=$ad1;
 		$n_for_fra+=$ad0+$ad1;
 		$ff_total+=2*$ad1/$dp;
+
 		print FRA "$chr\t$pos\t$ref\t$alt\t$ad1\t$dp\t" . (2*$ad1/$dp)."\n";
 	}
 }
