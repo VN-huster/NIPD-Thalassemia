@@ -86,8 +86,8 @@ close OUT;
 
 open M,">$outfile.mout.plot" or die $!;
 open F,">$outfile.fout.plot" or die $!;
-print M "chr\tpos\tparent\tfetus\n";
-print F "chr\tpos\tparent\tfetus\n";
+print M "chr\tpos\tfetus\tparent\n";
+print F "chr\tpos\tfetus\tparent\n";
 open IN, $file or die $!;
 while(<IN>){
     chomp;
