@@ -107,6 +107,8 @@ boxplot.stats(t)->t.box
 t.fra=t.box$stats[3]
 print(paste0("fetal fraction ",t.fra))
 #fra.mean=t.fra
+fra.mean=as.numeric(read.table(paste0(prefix,".ff.txt"))[1,1])
+print(paste0("fetal fraction ",fra.mean))
 
 
 
@@ -191,6 +193,8 @@ getTransProbs  <- function(map,snpset,chrname){
 #    sum=sum+sum(t)
 #}
 #Perror=count/sum
+#Perror=0.02
+#Perror=0.01
 Perror=0.02
 
 for(i in 1:nrow(fd.fix)){

@@ -100,6 +100,8 @@ mean(fra.fix$fra)->fra.mean
 sd(fra.fix$fra)->fra.sd
 print(paste0("fetal fraction ",fra.mean,"(sd:",fra.sd,")"))
 write.table(fra.mean,paste0(prefix,".concentration.txt"),sep="\t",quote=F,row.names=F,col.names=F)
+fra.mean=as.numeric(read.table(paste0(prefix,".ff.txt"))[1,1])
+print(paste0("fetal fraction ",fra.mean))
 
 t=fra$fra
 t=t[t<0.5&t>0.01]
