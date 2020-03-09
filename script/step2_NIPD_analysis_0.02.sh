@@ -15,6 +15,7 @@ prefix=$5
 
 perl script/get_parent_hap_v2.pl $phased_vcf $mother_mutation $father_mutation $prefix
 perl script/famvcf_analysis.pl $fam_vcf $prefix
+perl script/err_fra_count.pl $fam_vcf $prefix
 Rscript script/HMM_dbi_pat_0.02.R $prefix
 if [ $? -ne 0 ]; then
     echo "HMM_pat failed"
