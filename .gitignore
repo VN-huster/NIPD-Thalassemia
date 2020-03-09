@@ -1,4 +1,7 @@
 *~
-workdir/
+workdir/output
+workdir/input/F*.vcf.gz
+workdir/input/F*.vcf.gz.tbi
+workdir/input/F*.cnv.list
 db/
 bin/

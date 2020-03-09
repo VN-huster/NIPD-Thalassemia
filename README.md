@@ -12,11 +12,21 @@ NIPT-Thalassemia
 * beagle
 
 ## Step0: prepare data
-get ref panel and copy to `db/` .   
-get samples' vcfs and copy to `workdir/input` .  
+which not in git repo:
+* `copy workdir/input/F*.vcf.gz`
+* `copy workdir/input/F*.vcf.gz.tbi`
+* `copy workdir/input/F*.cnv.list`
+* `copy bin/`
+* `copy db/`
+
 create output dir:  
 ```
 mkdir -p workdir/output
+```
+
+## All Step: run all steps in one shell
+```
+sh script/run.sh
 ```
 
 ## Step1: phasing parents
@@ -83,10 +93,4 @@ Rscript script/fetus_hap_consistency.beta.R workdir/input/beta.list workdir/outp
 ## Plot figure S3
 ```
 sh script/plot.figureS3.sh
-```
-
-## Calculate confidence score
-after *step2*, we can calculate confidence score use:
-```
-Rscript script/cal.pathCS.R workdir/output
 ```
