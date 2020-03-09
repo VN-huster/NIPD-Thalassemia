@@ -16,7 +16,8 @@ col.unmatch="grey"
 col.matchF="lightseagreen"
 col.matchM="lightcoral"
 
-pdf(paste0(workdir,"/","FigureS2_",tag,".pdf"),width=16,height=25)
+#pdf(paste0(workdir,"/","FigureS2_",tag,".pdf"),width=16,height=25)
+tiff(paste0(workdir,"/","FigureS2_",tag,".600dpi.tiff"),width=16,height=25,units='in',res=600,compression='jpeg',family='Arial')
 par(mar=c(5,2,0,0),mgp=c(3,.5,0),mfrow=c(1,2))
 read.table(sList,stringsAsFactors = F)[,1]->flist
 nS=length(flist)
@@ -31,7 +32,10 @@ plot(0,t='n',
      xaxt='n',yaxt='n',
      xpd=T)
 xls=seq(0,xl[2],by=1e5)
-axis(1,at=xls,labels = xls/1e6,cex.axis=1.3)
+#axis(1,at=xls,labels = xls/1e6,cex.axis=1.3)
+xlab=round(seq(0,3.5e5,by=5e4)/1e6,digits=2)
+xlab=sprintf("%.2f", xlab)
+axis(1,at=seq(0,3.5e5,by=5e4),labels=xlab,lwd=0.75,cex.axis=1.3)
 for(i in 1:nS){
     read.table(paste0(workdir,"/",flist[i],"_verify.",tag,".OUT.stat.mout.plot"),stringsAsFactors = T,header=T)->t
     t$match=col.unmatch
@@ -60,8 +64,10 @@ plot(0,t='n',
      xaxt='n',yaxt='n',
      xpd=T)
 xls=seq(0,xl[2],by=1e5)
-axis(1,at=xls,labels = xls/1e6,cex.axis=1.3)
-
+#axis(1,at=xls,labels = xls/1e6,cex.axis=1.3)
+xlab=round(seq(0,3.5e5,by=5e4)/1e6,digits=2)
+xlab=sprintf("%.2f", xlab)
+axis(1,at=seq(0,3.5e5,by=5e4),labels=xlab,lwd=0.75,cex.axis=1.3)
 for(i in 1:nS){
     read.table(paste0(workdir,"/",flist[i],"_verify.",tag,".OUT.stat.fout.plot"),stringsAsFactors = T,header=T)->t
     t$match=col.unmatch
