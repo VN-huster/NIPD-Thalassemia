@@ -1,6 +1,6 @@
 args=commandArgs(T)
 #windowsFonts(myCustomWindowsFontName=windowsFont('Times New Roman'))
-pdf(paste0("S3_alpha",".pdf"),width=19,height=28)
+pdf(paste0("FigureS3_alpha",".pdf"),width=20,height=30)
 #tiff(paste0("alpha_nipt_consistency_arial",".tiff"),width=17,height=30,units='in',res=600,compression='jpeg',family='Arial',pointsize=8)
 #jpeg(filename ="alpha_nipt_consistency_arial.jpeg",width=19,height=28,units='in',res=600,family='Arial')
 gene=c(222846,227520)
@@ -31,8 +31,8 @@ for(i in nrow(flist):1){
     xlab=sprintf("%.2f", xlab)
     xlab <- paste0(xlab,"Mb")
     ylab=seq(-10,10,by=10)
-    axis(2,at=ylab+i*y,labels=c(10,0,10),xaxp=c(-9+i*y,10+i*y,18),las=1,cex.axis=1.2)
-    mtext(paste0("",flist[i,1]),side=2, line=1.7,col=1,outer=F,cex=1.5,at=i*y,)
+    axis(2,at=ylab+i*y,labels=c(-10,0,10),xaxp=c(-9+i*y,10+i*y,18),las=1,cex.axis=1.2)
+    mtext(paste0("",flist[i,1]),side=2, line=1.8,col=1,outer=F,cex=1.5,at=i*y,)
     #abline(h=0+i*y,col=5)
     polygon(x=c(xl[1],xl[2]),y=c(0+i*y,0+i*y),col=5,density=-1,border=5,lwd=1.5) 
     #points(x=gene,y=c(0,0)+i*y,cex=c(4,4)*0.2,col=c(4,4),pch=c(20,20))
@@ -46,6 +46,12 @@ for(i in nrow(flist):1){
 	a->tmp2
 	if (!is.null(tmp2$OddRatio_M)){
 	    points(tmp2$pos,tmp2$OddRatio_M+i*y,xlim=xl,t='l',pch=20,col="black",cex=2,lwd=2,lty=1)
+	}else{
+	    if (tmp2$P0>0.5){
+		points(tmp2$pos,tmp2$P0/tmp2$P1+i*y,xlim=xl,t='p',pch=20,col="black",cex=1,lwd=1,lty=1)
+	    }else{
+		points(tmp2$pos,-tmp2$P0/tmp2$P1+i*y,xlim=xl,t='p',pch=20,col="black",cex=1,lwd=1,lty=1)
+	    }
 	}
     }
 }
@@ -74,8 +80,8 @@ for(i in nrow(flist):1){
     xlab <- paste0(xlab,"Mb")
     #axis(1,at=seq(xl[1],xl[2],by=(xl[2]-xl[1])/5),labels=xlab,lwd=0.75)
     ylab=seq(-10,10,by=10)
-    axis(2,at=ylab+i*y,labels=c(10,0,10),xaxp=c(-9+i*y,10+i*y,18),las=1,cex.axis=1.2)
-    mtext(paste0("",flist[i,1]),side=2, line=1.7,col=1,outer=F,cex=1.5,at=i*y)
+    axis(2,at=ylab+i*y,labels=c(-10,0,10),xaxp=c(-9+i*y,10+i*y,18),las=1,cex.axis=1.2)
+    mtext(paste0("",flist[i,1]),side=2, line=1.8,col=1,outer=F,cex=1.5,at=i*y)
     #abline(h=0+i*y,col=5)
     polygon(x=c(xl[1],xl[2]),y=c(0+i*y,0+i*y),col=5,density=-1,border=5,lwd=1.5)
     #points(x=gene,y=c(0,0)+i*y,cex=c(4,4)*0.2,col=c(4,4),pch=c(20,20))
@@ -88,7 +94,23 @@ for(i in nrow(flist):1){
 	read.table(paste0(flist[i,1],"_nipt.OR.fout"),header=T,stringsAsFactors=F)->a
 	a->tmp2
 	if (!is.null(tmp2$OddRatio_F)){
-    	    points(tmp2$pos,tmp2$OddRatio_F+i*y,xlim=xl,t='l',pch=20,col="black",cex=2,lwd=2,lty=1)
+	    if (nrow(tmp2)==1 && tmp2$OddRatio_F==0){
+		if (tmp2$P0/tmp2$P1<10){
+		    if (tmp2$P0>0.5){
+    			points(tmp2$pos,tmp2$P0/tmp2$P1+i*y,xlim=xl,t='p',pch=20,col="black",cex=1,lwd=1,lty=1)
+		    }else{
+			points(tmp2$pos,-tmp2$P0/tmp2$P1+i*y,xlim=xl,t='p',pch=20,col="black",cex=1,lwd=1,lty=1)
+		    }
+		}else{
+		    if (tmp2$P0>0.5){
+    			points(tmp2$pos,10+i*y,xlim=xl,t='p',pch=20,col="black",cex=1,lwd=1,lty=1)
+		    }else{
+			points(tmp2$pos,-10+i*y,xlim=xl,t='p',pch=20,col="black",cex=1,lwd=1,lty=1)
+		    }
+		}
+	    }else{
+    		points(tmp2$pos,tmp2$OddRatio_F+i*y,xlim=xl,t='l',pch=20,col="black",cex=2,lwd=2,lty=1)
+	    }
 	}
     }
 }
