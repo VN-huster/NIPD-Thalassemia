@@ -21,7 +21,7 @@ while(<GENE>){
 }
 
 
-open IN,"< $md.fout" or die$!;
+open IN,"< $md.fout" or die"can not find $md.fout:$!\n";
 open MOUT,"> $md.fout.plot" or die$!;
 my %headers;
 while(<IN>){

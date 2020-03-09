@@ -4,7 +4,7 @@ my $vcf=shift;
 my $outfile1=shift;
 my $outfile=shift;
 my %hash;
-open LIST, $samIDlist or die $!;
+open LIST, $samIDlist or die "can not open $samIDlist:$!\n";
 while(<LIST>){
     chomp;
     #A-THAL1-mat    .	SEA/N	SEA 0/1	del37	0/0 del42   0/0

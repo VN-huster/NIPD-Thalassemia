@@ -4,7 +4,7 @@ my $prefix = shift;
 my $hapfile = $prefix . ".OUT";
 my $fout = $prefix . ".fout";
 open HAPFILE, $hapfile or die $!;
-open FOUT, $fout or die $!;
+open FOUT, $fout or die "can not find $fout:$!\n";
 my @FHAP = <FOUT>;
 my %header;
 my (@F0_s, @F0_e);
