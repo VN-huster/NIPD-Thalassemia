@@ -24,7 +24,7 @@ create output dir:
 mkdir -p workdir/output
 ```
 
-## All Step: run all steps in one shell
+## AllInOne Step: run all steps in one script
 ```
 sh script/run.sh
 ```
@@ -41,31 +41,31 @@ for parallel run
 
 ## Step2: NIPD
 ```
-sh script/run_step1.sh
+sh script/run_step2.sh
 ```
 or 
 ```
-./bin/parallelRun -list script/run_step1.sh
+./bin/parallelRun -list script/run_step2.sh
 ```
 for parallel run
 
 ## Step3
 ```
-sh script/run_step1.sh
+sh script/run_step3.sh
 ```
 or 
 ```
-./bin/parallelRun -list script/run_step1.sh
+./bin/parallelRun -list script/run_step3.sh
 ```
 for parallel run
 
 ## Step4
 ```
-sh script/run_step1.sh
+sh script/run_step4.sh
 ```
 or 
 ```
-./bin/parallelRun -list script/run_step1.sh
+./bin/parallelRun -list script/run_step4.sh
 ```
 for parallel run
 
