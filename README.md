@@ -11,6 +11,11 @@ NIPT-Thalassemia
 * vcf-merge (from [VCFtools](https://vcftools.github.io/perl_module.html))
 * beagle
 
+## Demo run
+```
+sh demo.sh
+```
+
 ## Step0: prepare data
 which not in git repo:
 * `copy workdir/input/F*.vcf.gz`
