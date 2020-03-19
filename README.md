@@ -24,7 +24,7 @@ create output dir:
 mkdir -p workdir/output
 ```
 
-## All Step: run all steps in one shell
+## AllInOne Step: run all steps in one script
 ```
 sh script/run.sh
 ```
