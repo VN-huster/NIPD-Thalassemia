@@ -24,8 +24,7 @@ my $snpb;
 my $ff_total;
 my ($err, $n_for_err, $fra, $n_for_fra);
 open FRA, "> $prefix.fra2" or die $!;
-
-open VCF, "tabix -B $vcf db/npitv3-2P1_capture_targets.bed|"||die $!;
+open VCF, "zcat $vcf|"||die $!;
 while(<VCF>){
     chomp;
     s/\|/\//g;
