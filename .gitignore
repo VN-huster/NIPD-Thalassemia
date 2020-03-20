@@ -5,3 +5,6 @@ workdir/input/F*.vcf.gz.tbi
 workdir/input/F*.cnv.list
 db/
 bin/
+demo/output/
+demo/demo.vcf.gz.tbi
+demo/popu.vcf.gz.tbi

@@ -13,7 +13,7 @@ NIPT-Thalassemia
 
 ## Demo run
 ```
-sh demo.sh
+sh script/demo.sh
 ```
 
 ## Step0: prepare data
