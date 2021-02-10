@@ -1,8 +1,9 @@
+#!/bin/bash
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F01.phased.vcf.gz workdir/input/F01.vcf.gz chr11:5248200 chr11:5247992 workdir/output/F01_nipt 2>&1 1>workdir/output/F01_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F02.phased.vcf.gz workdir/input/F02.vcf.gz chr11:5247153 chr11:5248329 workdir/output/F02_nipt 2>&1 1>workdir/output/F02_nipt.step2.log
-sh script/step2_NIPD_analysis_0.02.sh workdir/output/F03.phased.vcf.gz workdir/input/F03.vcf.gz chr11:5247992 chr11:5247992 workdir/output/F03_nipt 2>&1 1>workdir/output/F03_nipt.step2.log
+sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F03.phased.vcf.gz workdir/input/F03.vcf.gz chr11:5247992 chr11:5247992 workdir/output/F03_nipt 2>&1 1>workdir/output/F03_nipt.step2.log
 sh script/step2_NIPD_analysis_0.02.sh workdir/output/F04.phased.vcf.gz workdir/input/F04.vcf.gz chr11:5247992 chr11:5247992 workdir/output/F04_nipt 2>&1 1>workdir/output/F04_nipt.step2.log
-sh script/step2_NIPD_analysis_0.02.sh workdir/output/F05.phased.vcf.gz workdir/input/F05.vcf.gz chr11:5247992 chr11:5247992 workdir/output/F05_nipt 2>&1 1>workdir/output/F05_nipt.step2.log
+sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F05.phased.vcf.gz workdir/input/F05.vcf.gz chr11:5247992 chr11:5247992 workdir/output/F05_nipt 2>&1 1>workdir/output/F05_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F06.phased.vcf.gz workdir/input/F06.vcf.gz chr11:5247992 chr11:5247992 workdir/output/F06_nipt 2>&1 1>workdir/output/F06_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F07.phased.vcf.gz workdir/input/F07.vcf.gz chr11:5247153 chr11:5247992 workdir/output/F07_nipt 2>&1 1>workdir/output/F07_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F08.phased.vcf.gz workdir/input/F08.vcf.gz chr11:5247992 chr11:5247153 workdir/output/F08_nipt 2>&1 1>workdir/output/F08_nipt.step2.log
@@ -25,7 +26,7 @@ sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F24.phased.vcf.gz workd
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F25.phased.vcf.gz workdir/input/F25.vcf.gz chr11:5247992 chr11:5247153 workdir/output/F25_nipt 2>&1 1>workdir/output/F25_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F26.phased.vcf.gz workdir/input/F26.vcf.gz chr11:5247992 chr11:5248329 workdir/output/F26_nipt 2>&1 1>workdir/output/F26_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F27.phased.vcf.gz workdir/input/F27.vcf.gz chr16:215400 chr16:215400 workdir/output/F27_nipt 2>&1 1>workdir/output/F27_nipt.step2.log
-sh script/step2_NIPD_analysis_0.02.sh workdir/output/F28.phased.vcf.gz workdir/input/F28.vcf.gz chr16:215400 chr16:223539 workdir/output/F28_nipt 2>&1 1>workdir/output/F28_nipt.step2.log
+sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F28.phased.vcf.gz workdir/input/F28.vcf.gz chr16:215400 chr16:223539 workdir/output/F28_nipt 2>&1 1>workdir/output/F28_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F29.phased.vcf.gz workdir/input/F29.vcf.gz chr16:215400 chr16:215400 workdir/output/F29_nipt 2>&1 1>workdir/output/F29_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F30.phased.vcf.gz workdir/input/F30.vcf.gz chr16:215400 chr16:215400 workdir/output/F30_nipt 2>&1 1>workdir/output/F30_nipt.step2.log
 sh script/step2_amn_NIPD_analysis_0.02.sh workdir/output/F31.phased.vcf.gz workdir/input/F31.vcf.gz chr16:215400 chr16:215400 workdir/output/F31_nipt 2>&1 1>workdir/output/F31_nipt.step2.log
